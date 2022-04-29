@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +33,10 @@ public class PayController {
         producer.sendPayEvent(respose);
         log.info("Mensaje agregado a la cola correctamente");
         return ResponseEntity.status(HttpStatus.CREATED).body(respose);
+    }
+
+    @GetMapping("/test")
+    public String postDepositEvent() {
+        return "pay";
     }
 }
